@@ -1,25 +1,29 @@
-function preload() {}
-
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-
-const limit = 30;
+const margin = 10;
+let limit = 0;
 let mainSquare = new Square(0, 0, 1, 3, true);
 let squares = [];
 let sinWaves = [];
 
+function preload() {}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  limit = height / 2.5 / margin;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  limit = height / 2.5 / margin;
+}
+
 function draw() {
-  background(220);
+  background(5);
   colorMode(HSB, 100);
   translate(width / 2, height / 2);
 
   // Sinuswave Lines
   push();
+  stroke(255);
   strokeWeight(2);
   // Left
   line(-200, -150, -200, 150);
@@ -46,6 +50,7 @@ function doSinWaves() {
   let s = mainSquare.dir * 0.8 - 180 * 0.8;
   sinWaves.unshift(s);
   if (sinWaves.length > 100) sinWaves.pop();
+  stroke(255);
   strokeWeight(2);
   noFill();
   beginShape();

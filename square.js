@@ -14,12 +14,12 @@ class Square {
 
   draw() {
     push();
-    translate(0, this.id * 15);
+    translate(0, this.id * margin);
     angleMode(DEGREES);
     rotate(this.dir);
     strokeWeight(3);
-    stroke(255);
-    fill(this.hue, 200, 100);
+    stroke(255, map(this.id, 0, limit, 255, 10));
+    fill(this.hue, 200, 100, map(this.id, 0, limit, 50, 10));
     beginShape();
     for (let i = 0; i <= 360; i += 360 / this.segments) {
       let x = cos(i) * 150;
